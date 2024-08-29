@@ -1,0 +1,110 @@
+// const prisma = require("../db/prisma");
+
+// // Créer un tuteur et l'associer à un élève existant
+// const createTuteurAndUpdateEleve = async (req, res) => {
+//     try {
+//         // Création du tuteur
+//         const user = await prisma.tuteur.create({
+//             data: {
+//                 nom: req.body.nom,
+//                 postnom: req.body.postnom,
+//                 email: req.body.email,
+//                 password: req.body.password,
+//                 telephone: parseInt(req.body.telephone, 10)
+//             }
+//         });
+
+//         // Mise à jour de l'élève avec l'ID du tuteur
+//         const updatedEleve = await prisma.eleve.update({
+//             where: { id_El: parseInt(req.body.eleveId, 10) },
+//             data: { usId: user.id_Us }
+//         });
+
+//         res.status(200).json({ tuteur: user, updatedEleve });
+//     } catch (error) {
+//         console.error("Erreur lors de la création du tuteur ou de la mise à jour de l'élève :", error);
+//         res.status(500).json({ message: "Erreur lors de la création du tuteur ou de la mise à jour de l'élève" });
+//     }
+// };
+
+// module.exports = {
+// createTuteurAndUpdateEleve
+// };
+
+const { use } = require("express/lib/router");
+// const prisma = require("../db/prisma");
+
+// // Créer un tuteur
+// const createTuteur = async (req, res) => {
+//     try {
+//         const user = await prisma.user.create({
+//             data: {
+//                 nom: req.body.nom,
+//                 postnom: req.body.postnom,
+//                 email: req.body.email,
+//                 password: req.body.password,
+//                 telephone: parseInt(req.body.telephone, 10)
+//             }
+//         });
+
+//         res.status(201).json(user);
+//     } catch (error) {
+//         console.error("Erreur lors de la création du tuteur :", error);
+//         res.status(500).json({ message: "Erreur lors de la création du tuteur" });
+//     }
+// };
+
+// module.exports = {
+// createTuteur
+// };
+
+const prisma = require("../db/prisma");
+
+// Créer un tuteur et vérifier s'il existe un élève avec le même numéro de téléphone
+const createTuteur = async (req, res) => {
+    try {
+        // Créer un nouvel utilisateur (tuteur)
+        const user = await prisma.user.create({
+            data: {
+                nom: req.body.nom,
+                postnom: req.body.postnom,
+                email: req.body.email,
+                password: req.body.password,
+                telephone: parseInt(req.body.telephone, 10)
+            }
+        });
+
+        // Vérifier s'il existe un élève avec le même numéro de téléphone
+        const eleve = await prisma.eleve.findUnique({
+            where: { telephone: parseInt(req.body.telephone, 10) }
+        });
+
+        if (eleve) {
+            // Si un élève est trouvé, associer l'élève au tuteur
+            await prisma.eleve.update({
+                where: { id_El: eleve.id_El },
+                data: { usId: user.id_Us }
+            });
+
+            return res.status(201).json({
+                message: "Tuteur créé avec succès. Un élève a été trouvé et associé au tuteur.",
+                user,
+                eleve
+            });
+        } else {
+            // Si aucun élève n'est trouvé, renvoyer un message indiquant qu'il n'y a pas d'élève
+            return res.status(201).json({
+                message: "Tuteur créé avec succès. Aucun élève associé trouvé.",
+                user
+            });
+        }
+    } catch (error) {
+        console.error("Erreur lors de la création du tuteur et de la vérification de l'élève :", error);
+        return res.status(500).json({ message: "Erreur lors de la création du tuteur et de la vérification de l'élève" });
+    }
+};
+
+module.exports = {
+    createTuteur
+};
+

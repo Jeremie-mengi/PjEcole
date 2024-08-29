@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser'); // Assurez-vous d'importer body-parser si vous l'utilisez
 const dotenv = require('dotenv');
 const eleveRoutes = require('./routes/eleves'); // Assurez-vous que le chemin est correct
+const userRouteur = require("./routes/user");
 
 // Initialiser dotenv pour charger les variables d'environnement
 dotenv.config();
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 
 // Utiliser les routes pour les élèves
 app.use('/eleve', eleveRoutes);
+app.use("/user",userRouteur);
 
 // Définir le port à écouter
 const PORT = process.env.PORT || 3000;
