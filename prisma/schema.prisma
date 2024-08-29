@@ -12,6 +12,31 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+// model tuteur {
+//   id_Us     Int     @id @default(autoincrement())
+//   nom       String
+//   postnom   String
+//   email     String  @unique
+//   password  String 
+//   telephone Int     @unique
+//   eleves    Eleve[] 
+// }
+
+// model Eleve {
+//   id_El     Int     @id @default(autoincrement())
+//   nom       String
+//   postnom   String
+//   prenom    String
+//   sexe      String 
+//   adresse   String
+//   email     String  @unique
+//   telephone Int     @unique
+//   classe    String
+//   usId      Int     
+//   users     tuteur    @relation(fields: [usId], references: [id_Us])
+// }
+
+// Modèle Tuteur
 model User {
   id_Us     Int     @id @default(autoincrement())
   nom       String
@@ -19,9 +44,10 @@ model User {
   email     String  @unique
   password  String 
   telephone Int     @unique
-  eleves    Eleve[] 
+  eleves    Eleve[] // Relation un-à-plusieurs avec Eleve
 }
 
+// Modèle Eleve
 model Eleve {
   id_El     Int     @id @default(autoincrement())
   nom       String
@@ -32,8 +58,8 @@ model Eleve {
   email     String  @unique
   telephone Int     @unique
   classe    String
-  usId      Int     
-  users     User    @relation(fields: [usId], references: [id_Us])
+  usId      Int?    // Clé étrangère optionnelle pour lier un tuteur
+  tuteur    User? @relation(fields: [usId], references: [id_Us])
 }
 
 

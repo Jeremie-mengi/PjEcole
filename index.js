@@ -1,16 +1,29 @@
-// app.js
-dotenv.config()
 const express = require('express');
+const bodyParser = require('body-parser'); // Assurez-vous d'importer body-parser si vous l'utilisez
+const dotenv = require('dotenv');
+const eleveRoutes = require('./routes/eleves'); // Assurez-vous que le chemin est correct
+
+// Initialiser dotenv pour charger les variables d'environnement
+dotenv.config();
+
+// Créer une instance d'Express
 const app = express();
-const cors = require("cors")
-const PORT = process.env.PORT;
+
+// Middleware pour parser le JSON
+app.use(bodyParser.json()); // Vous n'avez besoin que d'une seule instance de ce middleware
 
 // Définir une route simple
 app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
+// Utiliser les routes pour les élèves
+app.use('/eleve', eleveRoutes);
+
+// Définir le port à écouter
+const PORT = process.env.PORT || 3000;
+
 // Lancer le serveur
-app.listen(port, () => {
-  console.log(`Le serveur est démarré sur http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Le serveur est en écoute sur le port ${PORT}`);
 });
