@@ -1,26 +1,37 @@
 const express = require('express');
-const bodyParser = require('body-parser'); // Assurez-vous d'importer body-parser si vous l'utilisez
+const bodyParser = require('body-parser'); // Pour parser le JSON
 const dotenv = require('dotenv');
+const passport = require("passport");
+
 const eleveRoutes = require('./routes/eleves'); // Assurez-vous que le chemin est correct
 const userRouteur = require("./routes/user");
+const login = require("./routes/authUser.js");
+const configPassport = require("./auth/usAuth"); // Importez la configuration de Passport
+
+// Initialiser l'application Express
+const app = express();
 
 // Initialiser dotenv pour charger les variables d'environnement
 dotenv.config();
 
-// Créer une instance d'Express
-const app = express();
-
 // Middleware pour parser le JSON
-app.use(bodyParser.json()); // Vous n'avez besoin que d'une seule instance de ce middleware
+app.use(bodyParser.json()); 
+
+// Initialiser Passport
+app.use(passport.initialize());
+passport.use(configPassport); // Utilisez la configuration de Passport
 
 // Définir une route simple
 app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
+// Utiliser les routes pour les utilisateurs et l'authentification
+app.use("/user", userRouteur);
+app.use("/login", login);
+
 // Utiliser les routes pour les élèves
 app.use('/eleve', eleveRoutes);
-app.use("/user",userRouteur);
 
 // Définir le port à écouter
 const PORT = process.env.PORT || 3000;

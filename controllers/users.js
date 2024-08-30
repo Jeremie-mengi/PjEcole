@@ -79,12 +79,13 @@ const getUsers = async (req, res) => {
 const createTuteur = async (req, res) => {
     try {
         // Créer un nouvel utilisateur (tuteur)
+        const passwordHashed = bcrypt.hashSync(req.body.password, 10);
         const user = await prisma.user.create({
             data: {
                 nom: req.body.nom,
                 postnom: req.body.postnom,
                 email: req.body.email,
-                password: req.body.password,
+                password: passwordHashed,
                 telephone: parseInt(req.body.telephone, 10)
             }
         });
