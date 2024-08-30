@@ -59,6 +59,21 @@ const { use } = require("express/lib/router");
 // };
 
 const prisma = require("../db/prisma");
+// Récupérer tous les élèves
+const getUsers = async (req, res) => {
+    try {
+        const users = await prisma.user.findMany({
+            include: {
+                eleves: true, // Inclure les élèves associés à chaque utilisateur
+            },
+        });
+        res.status(200).json(users);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des utilisateurs :", error);
+        res.status(500).json({ message: "Erreur lors de la récupération des utilisateurs" });
+    }
+};
+
 
 // Créer un tuteur et vérifier s'il existe un élève avec le même numéro de téléphone
 const createTuteur = async (req, res) => {
@@ -74,22 +89,24 @@ const createTuteur = async (req, res) => {
             }
         });
 
-        // Vérifier s'il existe un élève avec le même numéro de téléphone
-        const eleve = await prisma.eleve.findUnique({
+        // Vérifier s'il existe un ou plusieurs élèves avec le même numéro de téléphone
+        const eleves = await prisma.eleve.findMany({
             where: { telephone: parseInt(req.body.telephone, 10) }
         });
 
-        if (eleve) {
-            // Si un élève est trouvé, associer l'élève au tuteur
-            await prisma.eleve.update({
-                where: { id_El: eleve.id_El },
-                data: { usId: user.id_Us }
-            });
+        if (eleves.length > 0) {
+            // Si un ou plusieurs élèves sont trouvés, les associer au tuteur
+            for (const eleve of eleves) {
+                await prisma.eleve.update({
+                    where: { id_El: eleve.id_El },
+                    data: { usId: user.id_Us }
+                });
+            }
 
             return res.status(201).json({
-                message: "Tuteur créé avec succès. Un élève a été trouvé et associé au tuteur.",
+                message: "Tuteur créé avec succès. Un ou plusieurs élèves ont été trouvés et associés au tuteur.",
                 user,
-                eleve
+                eleves
             });
         } else {
             // Si aucun élève n'est trouvé, renvoyer un message indiquant qu'il n'y a pas d'élève
@@ -105,6 +122,8 @@ const createTuteur = async (req, res) => {
 };
 
 module.exports = {
-    createTuteur
+    createTuteur,
+    getUsers
 };
+
 

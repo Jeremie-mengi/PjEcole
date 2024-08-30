@@ -56,7 +56,7 @@ model Eleve {
   sexe      String 
   adresse   String
   email     String  @unique
-  telephone Int     @unique
+  telephone Int    
   classe    String
   usId      Int?    // Clé étrangère optionnelle pour lier un tuteur
   tuteur    User? @relation(fields: [usId], references: [id_Us])
