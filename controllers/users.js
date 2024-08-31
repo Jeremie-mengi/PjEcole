@@ -59,6 +59,7 @@ const { use } = require("express/lib/router");
 // };
 
 const prisma = require("../db/prisma");
+const bcrypt = require("bcrypt");
 // Récupérer tous les élèves
 const getUsers = async (req, res) => {
     try {
@@ -75,11 +76,14 @@ const getUsers = async (req, res) => {
 };
 
 
-// Créer un tuteur et vérifier s'il existe un élève avec le même numéro de téléphone
+
+
 const createTuteur = async (req, res) => {
     try {
-        // Créer un nouvel utilisateur (tuteur)
+        console.log("Données reçues pour créer un tuteur :", req.body);
+
         const passwordHashed = bcrypt.hashSync(req.body.password, 10);
+
         const user = await prisma.user.create({
             data: {
                 nom: req.body.nom,
@@ -90,13 +94,15 @@ const createTuteur = async (req, res) => {
             }
         });
 
-        // Vérifier s'il existe un ou plusieurs élèves avec le même numéro de téléphone
+        console.log("Utilisateur créé :", user);
+
         const eleves = await prisma.eleve.findMany({
             where: { telephone: parseInt(req.body.telephone, 10) }
         });
 
+        console.log("Élèves trouvés avec le même téléphone :", eleves);
+
         if (eleves.length > 0) {
-            // Si un ou plusieurs élèves sont trouvés, les associer au tuteur
             for (const eleve of eleves) {
                 await prisma.eleve.update({
                     where: { id_El: eleve.id_El },
@@ -110,7 +116,6 @@ const createTuteur = async (req, res) => {
                 eleves
             });
         } else {
-            // Si aucun élève n'est trouvé, renvoyer un message indiquant qu'il n'y a pas d'élève
             return res.status(201).json({
                 message: "Tuteur créé avec succès. Aucun élève associé trouvé.",
                 user
@@ -126,5 +131,3 @@ module.exports = {
     createTuteur,
     getUsers
 };
-
-
