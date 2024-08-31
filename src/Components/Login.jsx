@@ -30,7 +30,7 @@ function Login() {
       if (res.status === 200) {
         localStorage.setItem('tokenUser', JSON.stringify(res.data));
         alert('User connecté avec succès');
-        window.location.href = "/";
+        window.location.href = "/Eleve";
       }
     } catch (error) {
       console.log(error?.response);

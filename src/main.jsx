@@ -7,7 +7,7 @@ import './assets/vendor/bootstrap/css/bootstrap.css'
 import './assets/vendor/bootstrap/js/bootstrap.js'
 import Login from './Components/Login.jsx';
 import Acceuil from './Components/Acceuil.jsx';
-import Eleve from './Components/Eleve.jsx';
+import Eleve from '../../pages/Eleve.jsx';
 import RegisterForm from './Components/RegisterForm.jsx';
 
 
