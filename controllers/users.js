@@ -31,7 +31,7 @@
 // createTuteurAndUpdateEleve
 // };
 
-const { use } = require("express/lib/router");
+// const { use } = require("express/lib/router");
 // const prisma = require("../db/prisma");
 
 // // Créer un tuteur
@@ -59,7 +59,9 @@ const { use } = require("express/lib/router");
 // };
 
 const prisma = require("../db/prisma");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
+
+
 // Récupérer tous les élèves
 const getUsers = async (req, res) => {
     try {
