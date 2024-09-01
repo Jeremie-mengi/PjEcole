@@ -25,6 +25,10 @@ const RegisterForm = () => {
       });
 
       if (res.status === 201) { // Code 201 pour création réussie
+        // Stocker les informations de l'utilisateur dans le localStorage
+        const userData = res.data; // Assurez-vous que l'API renvoie les données utilisateur nécessaires
+        localStorage.setItem('user', JSON.stringify(userData));
+
         alert('Compte créé avec succès');
         window.location.href = "/Login"; // Redirection vers la Page Login
       }
@@ -45,8 +49,8 @@ const RegisterForm = () => {
                 <div className="card mb-3">
                   <div className="card-body">
                     <div className="pt-4 pb-2">
-                      <h5 className="card-title text-center pb-0 fs-4">Create an Account</h5>
-                      <p className="text-center small">Enter your personal details to create an account</p>
+                      <h5 className="card-title text-center pb-0 fs-4">Créer un compte</h5>
+                      <p className="text-center small">Entrez vos informations personnelles pour créer un compte</p>
                     </div>
                     <form className="row g-3 needs-validation" onSubmit={handleSubmit(onSubmit)} noValidate>
                       <div className="col-12">
@@ -56,7 +60,7 @@ const RegisterForm = () => {
                           name="nom"
                           className={`form-control ${errors.nom ? 'is-invalid' : ''}`}
                           id="nom"
-                          {...register('nom', { required: 'Please, enter your name!' })}
+                          {...register('nom', { required: 'Veuillez entrer votre nom!' })}
                         />
                         {errors.nom && <div className="invalid-feedback">{errors.nom.message}</div>}
                       </div>
@@ -68,7 +72,7 @@ const RegisterForm = () => {
                           name="postnom"
                           className={`form-control ${errors.postnom ? 'is-invalid' : ''}`}
                           id="postnom"
-                          {...register('postnom', { required: 'Please, enter your postnom!' })}
+                          {...register('postnom', { required: 'Veuillez entrer votre postnom!' })}
                         />
                         {errors.postnom && <div className="invalid-feedback">{errors.postnom.message}</div>}
                       </div>
@@ -81,10 +85,10 @@ const RegisterForm = () => {
                           className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                           id="email"
                           {...register('email', {
-                            required: 'Please enter a valid Email address!',
+                            required: 'Veuillez entrer une adresse email valide!',
                             pattern: {
                               value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                              message: 'Invalid email format',
+                              message: 'Format d\'email invalide',
                             },
                           })}
                         />
@@ -92,29 +96,29 @@ const RegisterForm = () => {
                       </div>
 
                       <div className="col-12">
-                        <label htmlFor="password" className="form-label">Password</label>
+                        <label htmlFor="password" className="form-label">Mot de passe</label>
                         <input
                           type="password"
                           name="password"
                           className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                           id="password"
-                          {...register('password', { required: 'Please enter your password!' })}
+                          {...register('password', { required: 'Veuillez entrer votre mot de passe!' })}
                         />
                         {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
                       </div>
 
                       <div className="col-12">
-                        <label htmlFor="telephone" className="form-label">Telephone</label>
+                        <label htmlFor="telephone" className="form-label">Téléphone</label>
                         <input
                           type="tel"
                           name="telephone"
                           className={`form-control ${errors.telephone ? 'is-invalid' : ''}`}
                           id="telephone"
                           {...register('telephone', {
-                            required: 'Please enter your telephone number!',
+                            required: 'Veuillez entrer votre numéro de téléphone!',
                             pattern: {
                               value: /^[0-9]{10,15}$/,
-                              message: 'Invalid telephone number format',
+                              message: 'Format de numéro de téléphone invalide',
                             },
                           })}
                         />
@@ -122,10 +126,13 @@ const RegisterForm = () => {
                       </div>
 
                       <div className="col-12">
-                        <button className="btn btn-primary w-100" type="submit">Create Account</button>
+                        <button className="btn btn-primary w-100" type="submit">Créer un compte</button>
                       </div>
                     </form>
                   </div>
+                </div>
+                <div className="text-center">
+                  <p className="small">Vous avez déjà un compte? <a href="/Login">Connectez-vous</a></p>
                 </div>
               </div>
             </div>

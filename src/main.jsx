@@ -31,7 +31,7 @@ const router = createBrowserRouter(
           element: <RegisterForm/>
         },
         {
-          path:"/Eleve",
+          path:"/eleve",
           element:<Eleve/>
         }   
     ],

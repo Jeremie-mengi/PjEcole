@@ -3,28 +3,14 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 function Login() {
+  // Utilisation de useForm pour gérer les champs du formulaire et les erreurs
   const { register, handleSubmit, formState: { errors } } = useForm();
-
-  // Configuration d'axios pour ajouter automatiquement le jeton d'authentification
-  const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000', // URL de base
-  });
-
-  axiosInstance.interceptors.request.use(config => {
-    const token = localStorage.getItem('tokenUser');
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
-    }
-    return config;
-  }, error => {
-    return Promise.reject(error);
-  });
 
   const onSubmit = async (data) => {
     try {
-      const res = await axiosInstance.post("/login", {
-        email: data.username,
-        password: data.password,
+      const res = await axios.post("http://localhost:3000/login", {
+        email: data.username, // Correspondance du champ
+        password: data.password, // Correspondance du champ
       });
 
       if (res.status === 200) {
@@ -35,9 +21,24 @@ function Login() {
     } catch (error) {
       console.log(error?.response);
       const err = error?.response?.data?.message;
-      alert(err || 'Erreur de connexion');
+      alert(err || 'Erreur lors de la connexion');
     }
   };
+
+  const axiosInstance = axios.create({
+    baseURL: 'http://localhost:3000', // Votre URL de base
+  });
+
+  // Intercepteur pour ajouter le jeton d'authentification à chaque requête
+  axiosInstance.interceptors.request.use(config => {
+    const token = localStorage.getItem('tokenUser');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  }, error => {
+    return Promise.reject(error);
+  });
 
   return (
     <main>
@@ -61,7 +62,7 @@ function Login() {
 
                     <form className="row g-3 needs-validation" onSubmit={handleSubmit(onSubmit)} noValidate>
                       <div className="col-12">
-                        <label htmlFor="yourUsername" className="form-label">Username</label>
+                        <label htmlFor="yourUsername" className="form-label">Email</label>
                         <div className="input-group has-validation">
                           <span className="input-group-text" id="inputGroupPrepend">@</span>
                           <input
@@ -69,7 +70,7 @@ function Login() {
                             name="username"
                             className={`form-control ${errors.username ? 'is-invalid' : ''}`}
                             id="yourUsername"
-                            {...register("username", { required: "Please enter your username" })}
+                            {...register("username", { required: "Please enter your email" })}
                           />
                           {errors.username && <div className="invalid-feedback">{errors.username.message}</div>}
                         </div>
@@ -104,7 +105,7 @@ function Login() {
                         <button className="btn btn-primary w-100" type="submit">Login</button>
                       </div>
                       <div className="col-12">
-                        <p className="small mb-0">Don't have an account? <a href="pages-register.html">Create an account</a></p>
+                        <p className="small mb-0">Don't have an account? <a href="/register">Create an account</a></p>
                       </div>
                     </form>
                   </div>
