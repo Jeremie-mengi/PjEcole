@@ -7,7 +7,7 @@ function SectionServices() {
       
       {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
+        <h2>Services  Kelasi</h2>
         <p>Nous offrons une gamme complète de services scolaires pour faciliter
            la gestion quotidienne des établissements éducatifs. De la gestion des présences des élèves
             à la communication efficace avec les parents, notre plateforme est conçue pour optimiser 
@@ -57,8 +57,10 @@ function SectionServices() {
           <div className="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-broadcast icon"></i></div>
-              <h4><a href="#" className="stretched-link">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <h4><a href="#" className="stretched-link"> Comportements et Conduite </a></h4>
+              <p>Le suivi des comportements et de la conduite des élèves permet d'assurer un environnement 
+                scolaire harmonieux et propice à l'apprentissage. 
+                Cela inclut l'observation des attitudes, la gestion des conflits, et le renforcement des valeurs positives.</p>
             </div>
           </div>
           {/* End Service Item */}
