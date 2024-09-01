@@ -7,7 +7,7 @@ function SectionAbout() {
       
       {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
-        <h2>About Us</h2>
+        <h2>Suivi Kelasi</h2>
       </div>
       {/* End Section Title */}
 
@@ -16,24 +16,28 @@ function SectionAbout() {
 
           <div className="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            Le suivi scolaire est essentiel pour assurer la progression des élèves et identifier leurs besoins.Adapter l'enseignement et soutenir les apprentissages pour maximiser les réussites.
+
             </p>
             <ul>
-              <li><i className="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i className="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i className="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo.</span></li>
+              <li><i className="bi bi-check2-circle"></i> <span>Le suivi scolaire aide à évaluer les progrès des élèves et à ajuster les stratégies éducatives.</span></li>
+              <li><i className="bi bi-check2-circle"></i> <span>Un suivi scolaire régulier assure une éducation de qualité pour tous les élèves. .</span></li>
+              <li><i className="bi bi-check2-circle"></i> <span>Un suivi rigoureux aide chaque élève à progresser efficacement.
+              </span></li>
             </ul>
           </div>
 
           <div className="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-              qui officia deserunt mollit anim id est laborum.
+            Le suivi scolaire joue un rôle essentiel dans l'accompagnement des élèves. 
+            Il permet de détecter les besoins spécifiques, d'adapter les méthodes d'enseignement, 
+            et d'assurer une progression continue. Grâce à un suivi rigoureux, les élèves bénéficient d'un soutien personnalisé, favorisant leur réussite académique. 
+            Ce processus implique une collaboration étroite entre enseignants, parents et élèves, pour créer un environnement propice à l'apprentissage. 
+            En fin de compte, un suivi scolaire efficace contribue à réduire les écarts de performance, à renforcer la confiance des élèves, et à préparer chaque enfant à un avenir prometteur.
+
             </p>
             <a href="#" className="read-more">
-              <span>Read More</span><i className="bi bi-arrow-right"></i>
+              <span>En savoir plus</span><i className="bi bi-arrow-right"></i>
             </a>
           </div>
 

@@ -8,7 +8,12 @@ function SectionServices() {
       {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
         <h2>Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Nous offrons une gamme complète de services scolaires pour faciliter
+           la gestion quotidienne des établissements éducatifs. De la gestion des présences des élèves
+            à la communication efficace avec les parents, notre plateforme est conçue pour optimiser 
+            le suivi scolaire et simplifier les tâches administratives. Que vous soyez un enseignant,
+             un administrateur ou un parent, nos outils vous permettent de rester connectés et informés,
+              assurant ainsi un environnement éducatif harmonieux et performant.</p>
       </div>
       {/* End Section Title */}
 
@@ -18,8 +23,11 @@ function SectionServices() {
           <div className="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-activity icon"></i></div>
-              <h4><a href="#" className="stretched-link">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="#" className="stretched-link">Presence des eleves</a></h4>
+              <p>
+              La présence des élèves est essentielle 
+              pour assurer un suivi scolaire efficace et 
+              favoriser leur réussite scolaire.</p>
             </div>
           </div>
           {/* End Service Item */}
@@ -27,8 +35,10 @@ function SectionServices() {
           <div className="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="#" className="stretched-link">Sed ut perspici</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4><a href="#" className="stretched-link">Communication des parents </a></h4>
+              <p>La communication des parents implique l'envoi régulier d'informations sur les progrès scolaires, 
+                les événements scolaires, et les comportements des élèves. Cela permet de renforcer 
+                la collaboration entre les enseignants et les parents pour le bien-être et la réussite des élèves.</p>
             </div>
           </div>
           {/* End Service Item */}
@@ -36,7 +46,7 @@ function SectionServices() {
           <div className="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-calendar4-week icon"></i></div>
-              <h4><a href="#" className="stretched-link">Magni Dolores</a></h4>
+              <h4><a href="#" className="stretched-link">Activités parascolaires</a></h4>
               <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
             </div>
           </div>
