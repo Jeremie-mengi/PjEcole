@@ -47,7 +47,9 @@ function SectionServices() {
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-calendar4-week icon"></i></div>
               <h4><a href="#" className="stretched-link">Activités parascolaires</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p>Les activités parascolaires englobent les sports, les clubs, et autres initiatives qui enrichissent 
+                l'expérience éducative des élèves en dehors des heures de cours. 
+                Elles favorisent le développement des compétences sociales, la créativité, et l'esprit d'équipe.</p>
             </div>
           </div>
           {/* End Service Item */}
