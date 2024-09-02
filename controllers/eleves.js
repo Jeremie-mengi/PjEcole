@@ -50,12 +50,18 @@ const prisma = require("../db/prisma");
 const getEleves = async (req, res) => {
     try {
         const eleves = await prisma.eleve.findMany();
+      
         res.status(200).json(eleves);
     } catch (error) {
         console.error("Erreur lors de la récupération des élèves :", error);
         res.status(500).json({ message: "Erreur lors de la récupération des élèves" });
     }
-};
+
+    
+
+}
+
+//----------------------------------------------------------------------------------------------------------test
 
 // Route POST pour créer un nouvel élève
 const createEleve = async (req, res) => {

@@ -16,9 +16,10 @@ const prisma = require("../db/prisma");
                 if (error) {
                     return next(error);
                 }
+   
     
                 const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '3m' });
-                return res.status(200).json({ token });
+                return res.status(200).json({ token, user});
             });
         })(req, res, next);
     }

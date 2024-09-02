@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require("cors");
 const bodyParser = require('body-parser'); // Pour parser le JSON
 const dotenv = require('dotenv');
 const passport = require("passport");
@@ -16,6 +17,7 @@ dotenv.config();
 
 // Middleware pour parser le JSON
 app.use(bodyParser.json()); 
+app.use(cors());
 
 // Initialiser Passport
 app.use(passport.initialize());
@@ -27,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // Utiliser les routes pour les utilisateurs et l'authentification
-app.use("/user", userRouteur);
+app.use("/register", userRouteur);
 app.use("/login", login);
 
 // Utiliser les routes pour les élèves
