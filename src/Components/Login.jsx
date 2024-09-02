@@ -15,6 +15,7 @@ function Login() {
 
       if (res.status === 200) {
         localStorage.setItem('tokenUser', JSON.stringify(res.data));
+        localStorage.setItem('user', JSON.stringify(res.data.user));
         alert('User connecté avec succès');
         window.location.href = "/eleve";
       }

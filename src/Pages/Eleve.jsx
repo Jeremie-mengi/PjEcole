@@ -55,43 +55,59 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
+
 
 function Eleve() {
     const [eleves, setEleves] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchEleves = async () => {
-            try {
-                const token = JSON.parse(localStorage.getItem('tokenUser')).token;
-                const userPhone = JSON.parse(localStorage.getItem('userPhone')); // Récupérer le numéro de téléphone du tuteur
-                console.log(userPhone);
                 
                 
-                if (!userPhone) {
-                    throw new Error("Le numéro de téléphone du tuteur est requis.");
-                }
 
-                const response = await axios.get(`http://localhost:3000/eleve?telephone=${userPhone}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+// Décoder le token
 
-                setEleves(response.data);
-                setError(null);
-            } catch (error) {
-                console.error("Erreur lors de la récupération des élèves :", error);
-                setError("Erreur lors de la récupération des élèves");
-                setEleves([]);
-            } finally {
-                setLoading(false);
-            }
-        };
 
-        fetchEleves();
-    }, []);
+
+useEffect(() => {
+    // Récupérer les informations de l'utilisateur à partir de localStorage
+    const userData = JSON.parse(localStorage.getItem('user'));
+
+    if (userData && userData.telephone) {
+        const userPhone = userData.telephone;
+
+        // Faire une requête pour récupérer tous les élèves
+        axios.get("http://localhost:3000/eleve")
+            .then(res => {
+                console.log("Données des élèves récupérées :", res.data); // Vérification des données récupérées
+
+                // Filtrer les élèves en fonction du numéro de téléphone de l'utilisateur
+                const filteredEleves = res.data.filter(eleve => eleve.telephone === userPhone);
+
+                console.log("Élèves filtrés :", filteredEleves); // Vérification des élèves filtrés
+
+                // Mettre à jour l'état avec la liste des élèves filtrés
+                setEleves(filteredEleves);
+            })
+            .catch(error => {
+                console.error("Erreur lors de la récupération des élèves:", error);
+            });
+    } else {
+        console.error("Utilisateur non trouvé ou numéro de téléphone manquant.");
+    }
+}, []);
+
+    const userData = localStorage.getItem('user');
+    
+    const filterEleve = eleves.filter((eleve) => {
+        return eleve.telephone == userData.telephone
+    })
+
+    
+    
+
+    
 
     return (
         <section>
