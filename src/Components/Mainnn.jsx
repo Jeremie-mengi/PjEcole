@@ -7,7 +7,7 @@ import SectionContact from './SectionContact';
 import SectionHero from './Sectionhero';
 import SectionPortFollo from './SectionPortFollo';
 
-function Main() {
+function Mainnn() {
   return (
     <>
     <SectionHero/>
@@ -20,4 +20,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Mainnn;

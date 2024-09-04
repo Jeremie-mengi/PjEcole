@@ -50,15 +50,15 @@ function Login() {
               <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                 <div className="d-flex justify-content-center py-4">
                   <a href="/" className="logo d-flex align-items-center w-auto">
-                    <span className="d-none d-lg-block">NiceAdmin</span>
+                    <span className="d-none d-lg-block">Se connecter</span>
                   </a>
                 </div>
 
                 <div className="card mb-3">
                   <div className="card-body">
                     <div className="pt-4 pb-2">
-                      <h5 className="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                      <p className="text-center small">Enter your username & password to login</p>
+                      <h5 className="card-title text-center pb-0 fs-4">Connectez-vous à votre compte</h5>
+                      <p className="text-center small">Entrez votre nom d'utilisateur et votre mot de passe pour vous connecter</p>
                     </div>
 
                     <form className="row g-3 needs-validation" onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -78,7 +78,7 @@ function Login() {
                       </div>
 
                       <div className="col-12">
-                        <label htmlFor="yourPassword" className="form-label">Password</label>
+                        <label htmlFor="yourPassword" className="form-label">Mot de passe</label>
                         <input
                           type="password"
                           name="password"
@@ -98,7 +98,7 @@ function Login() {
                             id="rememberMe"
                             {...register("remember")}
                           />
-                          <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
+                          <label className="form-check-label" htmlFor="rememberMe">Se souvenir de moi</label>
                         </div>
                       </div>
 
@@ -106,14 +106,14 @@ function Login() {
                         <button className="btn btn-primary w-100" type="submit">Login</button>
                       </div>
                       <div className="col-12">
-                        <p className="small mb-0">Don't have an account? <a href="/register">Create an account</a></p>
+                        <p className="small mb-0">Avez vous un compte? <a href="/register">Creer Un compte</a></p>
                       </div>
                     </form>
                   </div>
                 </div>
 
                 <div className="credits">
-                  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                  Designed by <a href="https://bootstrapmade.com/">Ecomil</a>
                 </div>
               </div>
             </div>

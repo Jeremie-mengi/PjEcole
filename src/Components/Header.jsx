@@ -24,7 +24,7 @@ function Header() {
     <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="container-fluid container-xl position-relative d-flex align-items-center">
         <a href="index.html" className="logo d-flex align-items-center me-auto">
-          <h1 className="sitename">Kelasi</h1>
+          <h1 className="sitename">Ecomil</h1>
         </a>
 
         <nav id="navmenu" className="navmenu">

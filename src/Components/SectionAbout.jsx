@@ -7,7 +7,7 @@ function SectionAbout() {
       
       {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
-        <h2>Suivi Kelasi</h2>
+        <h2>Suivi</h2>
       </div>
       {/* End Section Title */}
 

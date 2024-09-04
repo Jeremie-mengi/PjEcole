@@ -20,7 +20,7 @@ function Footer() {
           <div className="row gy-4">
             <div className="col-lg-4 col-md-6 footer-about">
               <a href="index.html" className="d-flex align-items-center">
-                <span className="sitename">Kelasi</span>
+                <span className="sitename">Ecomil</span>
               </a>
               <div className="footer-contact pt-3">
                 <p></p>
@@ -64,7 +64,7 @@ function Footer() {
         </div>
 
         <div className="container copyright text-center mt-4">
-          <p>© <span>Copyright</span> <strong className="px-1 sitename">Kelasi</strong> </p>
+          <p>© <span>Copyright</span> <strong className="px-1 sitename">Ecomil</strong> </p>
           <div className="credits">
             Designed by <a href="#">Jeremie Mengi</a>
           </div>

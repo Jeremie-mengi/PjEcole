@@ -7,7 +7,7 @@ function SectionServices() {
       
       {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
-        <h2>Services  Kelasi</h2>
+        <h2>Services</h2>
         <p>Nous offrons une gamme complète de services scolaires pour faciliter
            la gestion quotidienne des établissements éducatifs. De la gestion des présences des élèves
             à la communication efficace avec les parents, notre plateforme est conçue pour optimiser 

@@ -1,7 +1,7 @@
 
 import Footer from "./Footer";
 import Header from "./Header";
-import Main from "./main";
+import Mainnn from "./Mainnn";
 import Scoll from "./Scoll";
 
 
@@ -10,7 +10,7 @@ function Acceuil() {
     <>
      <body class="index-page">
 <Header/>
-<Main/>
+<Mainnn/>
 <Footer/>
 <Scoll/>
 {/* <!-- Scroll Top --> */}

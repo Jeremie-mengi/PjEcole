@@ -22,7 +22,7 @@ function  SectionPortFollo() {
 
       {/* <!-- Section Title --> */}
       <div class="container section-title" data-aos="fade-up">
-        <h2>BANA KELASI</h2>
+        <h2>Projets Éducatifs</h2>
         <p>
         L'éducation est essentielle pour les enfants, 
         car elle leur ouvre les portes du savoir.</p>
@@ -34,7 +34,7 @@ function  SectionPortFollo() {
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">Eleves</li>
+            <li data-filter="*" class="filter-active">Elèves</li>
             <li data-filter=".filter-app">Autorités</li>
             <li data-filter=".filter-product">Ecoles</li>
             <li data-filter=".filter-branding">Cartographie</li>
