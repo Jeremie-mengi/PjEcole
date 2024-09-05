@@ -50,7 +50,7 @@ function Login() {
               <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                 <div className="d-flex justify-content-center py-4">
                   <a href="/" className="logo d-flex align-items-center w-auto">
-                    <span className="d-none d-lg-block">Se connecter</span>
+                    <span className="d-none d-lg-block " style={{ fontSize: '2rem' }}>Bienvenue</span>
                   </a>
                 </div>
 
@@ -89,31 +89,22 @@ function Login() {
                         {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
                       </div>
 
-                      <div className="col-12">
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            name="remember"
-                            id="rememberMe"
-                            {...register("remember")}
-                          />
-                          <label className="form-check-label" htmlFor="rememberMe">Se souvenir de moi</label>
-                        </div>
+                      <div className="col-12 text-end">
+                        <a href="/forgot" className="small">Mot de passe oublié?</a>
                       </div>
 
                       <div className="col-12">
                         <button className="btn btn-primary w-100" type="submit">Login</button>
                       </div>
                       <div className="col-12">
-                        <p className="small mb-0">Avez vous un compte? <a href="/register">Creer Un compte</a></p>
+                        <p className="small mb-0">Avez vous un compte? <a href="/register">Créer un compte</a></p>
                       </div>
                     </form>
                   </div>
                 </div>
 
                 <div className="credits">
-                  Designed by <a href="https://bootstrapmade.com/">Ecomil</a>
+                  Designed by <a href="#">Ecomil</a>
                 </div>
               </div>
             </div>
