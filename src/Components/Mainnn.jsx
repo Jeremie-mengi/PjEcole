@@ -4,14 +4,15 @@ import SectionAbout from './SectionAbout';
 import SectionServices from './SectionServices';
 import SectionCall from './SectionCall';
 import SectionContact from './SectionContact';
-import Sectionhero from './Sectionhero.jsx';
+import Sectionhero from './SectionHero.jsx';
 import SectionPortFollo from './SectionPortFollo';
+import SectionHero from './SectionHero.jsx';
 
 
 function Mainnn() {
   return (
     <>
-    <Sectionhero/>
+   <SectionHero/>
     <SectionAbout/>
     <SectionServices/>
     <SectionCall/>
