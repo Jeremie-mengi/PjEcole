@@ -4,8 +4,9 @@ import SectionAbout from './SectionAbout';
 import SectionServices from './SectionServices';
 import SectionCall from './SectionCall';
 import SectionContact from './SectionContact';
-import Sectionhero from './Sectionhero';
+import Sectionhero from './Sectionhero.jsx';
 import SectionPortFollo from './SectionPortFollo';
+
 
 function Mainnn() {
   return (
