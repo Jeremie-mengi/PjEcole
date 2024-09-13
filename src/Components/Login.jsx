@@ -90,7 +90,7 @@ function Login() {
                       </div>
 
                       <div className="col-12 text-end">
-                        <a href="/forgot" className="small">Mot de passe oublié?</a>
+                        <a href="/login" className="small">Mot de passe oublié?</a>
                       </div>
 
                       <div className="col-12">
