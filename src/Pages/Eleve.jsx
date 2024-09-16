@@ -139,6 +139,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Eleve() {
     const [eleves, setEleves] = useState([]);
@@ -170,29 +171,8 @@ function Eleve() {
         }
     }, []);
 
-    // Actions des boutons
-    const handlePresence = (eleveId) => {
-        console.log(`Présence pour l'élève ${eleveId}`);
-        // Logique pour marquer la présence
-    };
-
-    const handleCommuniquer = (eleveId) => {
-        console.log(`Communiquer avec l'élève ${eleveId}`);
-        // Logique pour communiquer
-    };
-
-    const handleSortie = (eleveId) => {
-        console.log(`Sortie pour l'élève ${eleveId}`);
-        // Logique pour gérer la sortie
-    };
-
-    const handleNotification = (eleveId) => {
-        console.log(`Notification pour l'élève ${eleveId}`);
-        // Logique pour envoyer une notification
-    };
-
     return (
-        <section style={{ textAlign: 'center', padding: '20px', maxWidth: '600px', margin: '0 auto', backgroundColor: '#f9f9f9', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+        <section style={{ textAlign: 'center', padding: '20px', maxWidth: '600px', margin: '0 auto', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',   backgroundImage: 'url(src/assets/img/1.webp)' }}>
             <h2 style={{ marginBottom: '20px', color: '#333' }}>Informations des Élèves</h2>
             {loading && <p>Chargement...</p>}
             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -211,34 +191,65 @@ function Eleve() {
 
                             {/* Boutons ajoutés */}
                             <div style={{ marginTop: '10px' }}>
-                                <button 
-                                    onClick={() => handlePresence(eleve.id_El)} 
-                                    style={{ marginRight: '10px', padding: '10px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px' }}>
-                                    Présence
-                                </button>
-                                <button 
-                                    onClick={() => handleCommuniquer(eleve.id_El)} 
-                                    style={{ marginRight: '10px', padding: '10px', backgroundColor: '#2196F3', color: 'white', border: 'none', borderRadius: '5px' }}>
-                                    Communiquer
-                                </button>
-                                <button 
-                                    onClick={() => handleSortie(eleve.id_El)} 
-                                    style={{ marginRight: '10px', padding: '10px', backgroundColor: '#FF5722', color: 'white', border: 'none', borderRadius: '5px' }}>
-                                    Sortie
-                                </button>
-                                <button 
-                                    onClick={() => handleNotification(eleve.id_El)} 
-                                    style={{ padding: '10px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '5px' }}>
-                                    Notification
-                                </button>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                !loading && <p>Aucun élève trouvé.</p>
-            )}
-        </section>
+    <Link 
+        to="/presence" 
+        style={{ 
+            marginRight: '10px', 
+            padding: '10px', 
+            backgroundColor: '#4CAF50', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '5px', 
+            textDecoration: 'none' 
+        }}>
+        Présence
+    </Link>
+    <Link 
+        to="/Communiqué" 
+        style={{ 
+            marginRight: '10px', 
+            padding: '10px', 
+            backgroundColor: '#2196F3', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '5px', 
+            textDecoration: 'none' 
+        }}>
+        Communiqué
+    </Link>
+    <Link 
+        to="/Sortie" 
+        style={{ 
+            marginRight: '10px', 
+            padding: '10px', 
+            backgroundColor: '#FF5722', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '5px', 
+            textDecoration: 'none' 
+        }}>
+        Sortie
+    </Link>
+    <Link 
+        to="/Notification" 
+        style={{ 
+            padding: '10px', 
+            backgroundColor: '#FFEB3B', 
+            color: 'black', 
+            border: 'none', 
+            borderRadius: '5px', 
+            textDecoration: 'none' 
+        }}>
+        Notification
+    </Link>
+</div>
+ </li>
+ ))}
+</ul>
+) : (
+    !loading && <p>Aucun élève trouvé.</p>
+  )}
+</section>
     );
 }
 
