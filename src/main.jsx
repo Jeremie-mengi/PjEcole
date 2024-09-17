@@ -10,6 +10,10 @@ import Acceuil from './Components/Acceuil.jsx';
 import RegisterForm from './Components/RegisterForm.jsx';
 import Eleve from './Pages/Eleve.jsx';
 import ElevesList from '../Private/ElevesList.jsx';
+import Presences from './Pages/Presences.jsx';
+import Sortie from './Pages/Sortie.jsx';
+import Communique from './Pages/Communique.jsx';
+import Notifications from './Pages/Notifications.jsx';
 
 
 
@@ -44,6 +48,22 @@ const router = createBrowserRouter(
         {
           path:"/elevesList",
           element:<ElevesList/>
+        },
+        {
+          path:"/presence/:id_El",
+          element:<Presences/>
+        },
+        {
+          path:"/sortie",
+          element:<Sortie/>
+        },
+        {
+          path:"/communique",
+          element:<Communique/>
+        },
+        {
+          path:"/notifications",
+          element:<Notifications/>
         }
     ],
        
