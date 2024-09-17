@@ -60,6 +60,45 @@ model Eleve {
   classe    String
   usId      Int?    // Clé étrangère optionnelle pour lier un tuteur
   tuteur    User? @relation(fields: [usId], references: [id_Us])
+  presences   Presence[]
+  sorties     Sortie[]
+  communiques Communique[]
+  notifications Notification[]
+}
+// Définition du modèle Presence
+model Presence {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  etat        String
+  eleveId     Int
+  eleve       Eleve    @relation(fields: [eleveId], references: [id_El])
+}
+
+// Définition du modèle Sortie
+model Sortie {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  raison      String
+  eleveId     Int
+  eleve       Eleve    @relation(fields: [eleveId], references: [id_El])
+}
+
+// Définition du modèle Communique
+model Communique {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  texte       String
+  eleveId     Int
+  eleve       Eleve    @relation(fields: [eleveId], references: [id_El])
+}
+
+// Définition du modèle Notification
+model Notification {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  message     String
+  eleveId     Int
+  eleve       Eleve    @relation(fields: [eleveId], references: [id_El])
 }
 
 

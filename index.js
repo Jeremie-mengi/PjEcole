@@ -3,9 +3,9 @@ const cors = require("cors");
 const bodyParser = require('body-parser'); // Pour parser le JSON
 const dotenv = require('dotenv');
 const passport = require("passport");
-
 const eleveRoutes = require('./routes/eleves'); // Assurez-vous que le chemin est correct
-const userRouteur = require("./routes/user");
+const userRouteur = require("./routes/user")
+const presen = require("./routes/presences.js")
 const login = require("./routes/authUser.js");
 const configPassport = require("./auth/usAuth"); // Importez la configuration de Passport
 
@@ -34,6 +34,9 @@ app.use("/login", login);
 
 // Utiliser les routes pour les élèves
 app.use('/eleve', eleveRoutes);
+app.use('/', presen);
+
+
 
 
 // Définir le port à écouter

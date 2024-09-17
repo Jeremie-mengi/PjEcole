@@ -1,74 +1,21 @@
-// const prisma = require("../db/prisma");
-
-// // Créer un tuteur et l'associer à un élève existant
-// const createTuteurAndUpdateEleve = async (req, res) => {
-//     try {
-//         // Création du tuteur
-//         const user = await prisma.tuteur.create({
-//             data: {
-//                 nom: req.body.nom,
-//                 postnom: req.body.postnom,
-//                 email: req.body.email,
-//                 password: req.body.password,
-//                 telephone: parseInt(req.body.telephone, 10)
-//             }
-//         });
-
-//         // Mise à jour de l'élève avec l'ID du tuteur
-//         const updatedEleve = await prisma.eleve.update({
-//             where: { id_El: parseInt(req.body.eleveId, 10) },
-//             data: { usId: user.id_Us }
-//         });
-
-//         res.status(200).json({ tuteur: user, updatedEleve });
-//     } catch (error) {
-//         console.error("Erreur lors de la création du tuteur ou de la mise à jour de l'élève :", error);
-//         res.status(500).json({ message: "Erreur lors de la création du tuteur ou de la mise à jour de l'élève" });
-//     }
-// };
-
-// module.exports = {
-// createTuteurAndUpdateEleve
-// };
-
-// const { use } = require("express/lib/router");
-// const prisma = require("../db/prisma");
-
-// // Créer un tuteur
-// const createTuteur = async (req, res) => {
-//     try {
-//         const user = await prisma.user.create({
-//             data: {
-//                 nom: req.body.nom,
-//                 postnom: req.body.postnom,
-//                 email: req.body.email,
-//                 password: req.body.password,
-//                 telephone: parseInt(req.body.telephone, 10)
-//             }
-//         });
-
-//         res.status(201).json(user);
-//     } catch (error) {
-//         console.error("Erreur lors de la création du tuteur :", error);
-//         res.status(500).json({ message: "Erreur lors de la création du tuteur" });
-//     }
-// };
-
-// module.exports = {
-// createTuteur
-// };
-
+// 
 const prisma = require("../db/prisma");
 const bcrypt = require('bcrypt');
 
-
-// Récupérer tous les élèves
+// Récupérer tous les utilisateurs avec les élèves associés et leurs détails
 const getUsers = async (req, res) => {
     try {
         const users = await prisma.user.findMany({
             include: {
-                eleves: true, // Inclure les élèves associés à chaque utilisateur
-            },
+                eleves: {
+                    include: {
+                        presences: true,
+                        sorties: true,
+                        communiques: true,
+                        notifications: true
+                    }
+                }
+            }
         });
         res.status(200).json(users);
     } catch (error) {
@@ -77,15 +24,15 @@ const getUsers = async (req, res) => {
     }
 };
 
-
-
-
+// Créer un tuteur et associer des élèves existants
 const createTuteur = async (req, res) => {
     try {
         console.log("Données reçues pour créer un tuteur :", req.body);
 
+        // Hash du mot de passe
         const passwordHashed = bcrypt.hashSync(req.body.password, 10);
 
+        // Création du tuteur
         const user = await prisma.user.create({
             data: {
                 nom: req.body.nom,
@@ -98,12 +45,20 @@ const createTuteur = async (req, res) => {
 
         console.log("Utilisateur créé :", user);
 
+        // Recherche des élèves par téléphone
         const eleves = await prisma.eleve.findMany({
-            where: { telephone: parseInt(req.body.telephone, 10) }
+            where: { telephone: parseInt(req.body.telephone, 10) },
+            include: {
+                presences: true,
+                sorties: true,
+                communiques: true,
+                notifications: true
+            }
         });
 
         console.log("Élèves trouvés avec le même téléphone :", eleves);
 
+        // Si des élèves sont trouvés, on les associe au tuteur
         if (eleves.length > 0) {
             for (const eleve of eleves) {
                 await prisma.eleve.update({

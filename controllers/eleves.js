@@ -44,29 +44,101 @@
 //     createEleve
 // };
 
+// const prisma = require("../db/prisma");
+
+// // Récupérer tous les élèves
+// const getEleves = async (req, res) => {
+//     try {
+//         const eleves = await prisma.eleve.findMany();
+      
+//         res.status(200).json(eleves);
+//     } catch (error) {
+//         console.error("Erreur lors de la récupération des élèves :", error);
+//         res.status(500).json({ message: "Erreur lors de la récupération des élèves" });
+//     }
+
+    
+
+// }
+
+// //----------------------------------------------------------------------------------------------------------test
+
+// // Route POST pour créer un nouvel élève
+// const createEleve = async (req, res) => {
+//     try {
+//         const { telephone, nom, postnom, prenom, sexe, adresse, email, classe, tuteurId } = req.body;
+//         const phoneNumber = parseInt(telephone, 10);
+
+//         // Rechercher un utilisateur avec le numéro de téléphone fourni
+//         const userByPhone = await prisma.user.findUnique({
+//             where: {
+//                 telephone: phoneNumber,
+//             },
+//         });
+
+//         // Associer l'élève à l'utilisateur trouvé par téléphone
+//         const userId = userByPhone ? userByPhone.id : null;
+
+//         // Créer l'élève
+//         const eleve = await prisma.eleve.create({
+//             data: {
+//                 nom: nom,
+//                 postnom: postnom,
+//                 prenom: prenom,
+//                 sexe: sexe,
+//                 adresse: adresse,
+//                 email: email,
+//                 telephone: phoneNumber,
+//                 classe: classe,
+//                 usId: tuteurId || userId, // Associer l'élève à l'utilisateur par `tuteurId` ou par numéro de téléphone
+//             },
+//         });
+
+//         // Message de confirmation
+//         const message = tuteurId
+//             ? "Élève créé et associé au tuteur spécifié par ID."
+//             : userByPhone
+//             ? "Élève créé et associé au tuteur trouvé par numéro de téléphone."
+//             : "Élève créé sans tuteur associé.";
+
+//         // Renvoi de la réponse avec l'élève créé
+//         res.status(201).json({ message, eleve });
+//     } catch (error) {
+//         console.error("Erreur lors de la création de l'élève :", error);
+//         res.status(500).json({ message: "Erreur lors de la création de l'élève" });
+//     }
+// };
+
+// module.exports = {
+//     getEleves,
+//     createEleve
+// };
+
+
 const prisma = require("../db/prisma");
 
 // Récupérer tous les élèves
 const getEleves = async (req, res) => {
     try {
-        const eleves = await prisma.eleve.findMany();
-      
+        const eleves = await prisma.eleve.findMany({
+            include: {
+                presences: true,
+                sorties: true,
+                communiques: true,
+                notifications: true,
+            },
+        });
         res.status(200).json(eleves);
     } catch (error) {
         console.error("Erreur lors de la récupération des élèves :", error);
         res.status(500).json({ message: "Erreur lors de la récupération des élèves" });
     }
-
-    
-
-}
-
-//----------------------------------------------------------------------------------------------------------test
+};
 
 // Route POST pour créer un nouvel élève
 const createEleve = async (req, res) => {
     try {
-        const { telephone, nom, postnom, prenom, sexe, adresse, email, classe, tuteurId } = req.body;
+        const { nom, postnom, prenom, sexe, adresse, email, telephone, classe, presences, sorties, communiques, notifications, tuteurId } = req.body;
         const phoneNumber = parseInt(telephone, 10);
 
         // Rechercher un utilisateur avec le numéro de téléphone fourni
@@ -76,10 +148,10 @@ const createEleve = async (req, res) => {
             },
         });
 
-        // Associer l'élève à l'utilisateur trouvé par téléphone
-        const userId = userByPhone ? userByPhone.id : null;
+        // Associer l'élève à l'utilisateur trouvé par téléphone ou par `tuteurId`
+        const userId = tuteurId || (userByPhone ? userByPhone.id : null);
 
-        // Créer l'élève
+        // Créer l'élève avec ses relations (presences, sorties, communiqués, notifications)
         const eleve = await prisma.eleve.create({
             data: {
                 nom: nom,
@@ -90,25 +162,47 @@ const createEleve = async (req, res) => {
                 email: email,
                 telephone: phoneNumber,
                 classe: classe,
-                usId: tuteurId || userId, // Associer l'élève à l'utilisateur par `tuteurId` ou par numéro de téléphone
+                usId: userId, // Associer l'élève à l'utilisateur par ID ou numéro de téléphone
+                presences: {
+                    create: presences.map(presence => ({
+                        date: new Date(presence.date).toISOString(), // Convertir la date au format ISO
+                        etat: presence.etat,
+                    })),
+                },
+                sorties: {
+                    create: sorties.map(sortie => ({
+                        date: new Date(sortie.date).toISOString(), // Convertir la date au format ISO
+                        raison: sortie.raison,
+                    })),
+                },
+                communiques: {
+                    create: communiques.map(communique => ({
+                        date: new Date(communique.date).toISOString(), // Convertir la date au format ISO
+                        texte: communique.texte,
+                    })),
+                },
+                notifications: {
+                    create: notifications.map(notification => ({
+                        date: new Date(notification.date).toISOString(), // Convertir la date au format ISO
+                        message: notification.message,
+                    })),
+                },
+            },
+            include: {
+                presences: true,
+                sorties: true,
+                communiques: true,
+                notifications: true,
             },
         });
 
-        // Message de confirmation
-        const message = tuteurId
-            ? "Élève créé et associé au tuteur spécifié par ID."
-            : userByPhone
-            ? "Élève créé et associé au tuteur trouvé par numéro de téléphone."
-            : "Élève créé sans tuteur associé.";
-
         // Renvoi de la réponse avec l'élève créé
-        res.status(201).json({ message, eleve });
+        res.status(201).json({ message: "Élève créé avec succès.", eleve });
     } catch (error) {
         console.error("Erreur lors de la création de l'élève :", error);
         res.status(500).json({ message: "Erreur lors de la création de l'élève" });
     }
 };
-
 module.exports = {
     getEleves,
     createEleve
