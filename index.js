@@ -6,6 +6,7 @@ const passport = require("passport");
 const eleveRoutes = require('./routes/eleves'); // Assurez-vous que le chemin est correct
 const userRouteur = require("./routes/user")
 const presen = require("./routes/presences.js")
+const sortie = require ("./routes/sorties.js")
 const login = require("./routes/authUser.js");
 const configPassport = require("./auth/usAuth"); // Importez la configuration de Passport
 
@@ -35,6 +36,8 @@ app.use("/login", login);
 // Utiliser les routes pour les élèves
 app.use('/eleve', eleveRoutes);
 app.use('/', presen);
+app.use('/',sortie );
+
 
 
 
