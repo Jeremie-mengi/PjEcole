@@ -14,6 +14,8 @@ import Presences from './Pages/Presences.jsx';
 import Sortie from './Pages/Sortie.jsx';
 import Communique from './Pages/Communique.jsx';
 import Notifications from './Pages/Notifications.jsx';
+import Admin from './Components/Admin.jsx';
+import User from './Components/User.jsx';
 
 
 
@@ -42,10 +44,6 @@ const router = createBrowserRouter(
           element:<Eleve/>
         },
         {
-          path:"/eleve",
-          element:<Eleve/>
-        },
-        {
           path:"/elevesList",
           element:<ElevesList/>
         },
@@ -54,16 +52,24 @@ const router = createBrowserRouter(
           element:<Presences/>
         },
         {
-          path:"/sortie",
+          path:"/sortie/:id_El",
           element:<Sortie/>
         },
         {
-          path:"/communique",
+          path:"/communique/:id_El",
           element:<Communique/>
         },
         {
-          path:"/notifications",
+          path:"/notifications/:id_El",
           element:<Notifications/>
+        },
+        {
+          path: "/admin",
+          element: <Admin />, // Interface Admin
+        },
+        {
+          path: "/user",
+          element: <User />, // Interface Utilisateur
         }
     ],
        

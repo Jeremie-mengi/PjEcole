@@ -339,7 +339,7 @@ function Eleve() {
                                     Sortie
                                 </Link>
                                 <Link 
-                                    to={`/notification/${eleve.id_El}`} 
+                                    to={`/notifications/${eleve.id_El}`} 
                                     style={{ padding: '10px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '5px', textDecoration: 'none' }}>
                                     Notification
                                 </Link>
