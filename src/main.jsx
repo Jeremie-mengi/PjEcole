@@ -8,14 +8,8 @@ import './assets/vendor/bootstrap/js/bootstrap.js'
 import Login from './Components/Login.jsx';
 import Acceuil from './Components/Acceuil.jsx';
 import RegisterForm from './Components/RegisterForm.jsx';
-import Eleve from './Pages/Publics/Eleve.jsx';
 import ElevesList from '../Private/ElevesList.jsx';
-import Presences from './Pages/Publics/Presences.jsx';
-import Sortie from './Pages/Publics/Sortie.jsx';
-import Communique from './Pages/Publics/Communique.jsx';
-import Notifications from './Pages/Publics/Notifications.jsx';
-import Admin from './Components/Admin.jsx';
-import User from './Components/User.jsx';
+import Eleve from './Pages/Publics/Eleve.jsx';
 
 
 
@@ -62,14 +56,6 @@ const router = createBrowserRouter(
         {
           path:"/notifications/:id_El",
           element:<Notifications/>
-        },
-        {
-          path: "/admin",
-          element: <Admin />, // Interface Admin
-        },
-        {
-          path: "/user",
-          element: <User />, // Interface Utilisateur
         }
     ],
        
