@@ -62,7 +62,7 @@ const styles = {
 };
 
 // Presence component
-function Presence() {
+function Presences() {
     const { id_El } = useParams();
     const [presences, setPresences] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -107,4 +107,4 @@ function Presence() {
     );
 }
 
-export default Presence;
+export default Presences;

@@ -9,7 +9,9 @@ import Login from './Components/Login.jsx';
 import Acceuil from './Components/Acceuil.jsx';
 import RegisterForm from './Components/RegisterForm.jsx';
 import ElevesList from '../Private/ElevesList.jsx';
-import Eleve from './Pages/Publics/Eleve.jsx';
+import Eleve from './Pages/Eleve.jsx';
+import Presence from './Pages/Presences.jsx';
+
 
 
 
@@ -43,7 +45,7 @@ const router = createBrowserRouter(
         },
         {
           path:"/presence/:id_El",
-          element:<Presences/>
+          element:<Presence/>
         },
         {
           path:"/sortie/:id_El",
