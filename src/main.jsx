@@ -11,17 +11,18 @@ import RegisterForm from './Components/RegisterForm.jsx';
 import ElevesList from '../Private/ElevesList.jsx';
 import Eleve from './Pages/Eleve.jsx';
 import Presence from './Pages/Presences.jsx';
-
-
-
-
+import Presences from './Pages/Presences.jsx';
+import Sortie from './Pages/Sortie.jsx';
+import Communique from './Pages/Communique.jsx';
+import Notifications from './Pages/Notifications.jsx';
+import UserLayout from './Pages/UserLayout.jsx';
 
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <App />,
+      element: <UserLayout />,
       children: [
         {
           path: "/",
@@ -45,7 +46,7 @@ const router = createBrowserRouter(
         },
         {
           path:"/presence/:id_El",
-          element:<Presence/>
+          element:<Presences/>
         },
         {
           path:"/sortie/:id_El",
