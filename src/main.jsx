@@ -10,12 +10,13 @@ import Acceuil from './Components/Acceuil.jsx';
 import RegisterForm from './Components/RegisterForm.jsx';
 import ElevesList from '../Private/ElevesList.jsx';
 import Eleve from './Pages/Eleve.jsx';
-import Presence from './Pages/Presences.jsx';
 import Presences from './Pages/Presences.jsx';
 import Sortie from './Pages/Sortie.jsx';
 import Communique from './Pages/Communique.jsx';
 import Notifications from './Pages/Notifications.jsx';
-import UserLayout from './Pages/UserLayout.jsx';
+import Admin from './Admin/Admin.jsx';
+
+
 
 
 
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <UserLayout />,
+      element:<App/>,
       children: [
         {
           path: "/",
@@ -60,6 +61,10 @@ const router = createBrowserRouter(
         {
           path:"/notifications/:id_El",
           element:<Notifications/>
+        }, 
+        {
+          path:"admin",
+          element:<Admin/>
         }
     ],
        
