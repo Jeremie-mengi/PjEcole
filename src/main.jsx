@@ -15,6 +15,8 @@ import Sortie from './Pages/Sortie.jsx';
 import Communique from './Pages/Communique.jsx';
 import Notifications from './Pages/Notifications.jsx';
 import Admin from './Admin/Admin.jsx';
+import Formslayouts from './Admin/PagesAdm/Formslayouts.jsx';
+import Formslay from './Admin/PagesAdm/Formslayouts.jsx';
 
 
 
@@ -65,6 +67,12 @@ const router = createBrowserRouter(
         {
           path:"admin",
           element:<Admin/>
+
+        },
+        {
+          path:"formlay",
+          element:<Formslay/>
+          
         }
     ],
        

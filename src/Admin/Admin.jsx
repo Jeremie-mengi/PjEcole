@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 
 function Admin() {
@@ -250,11 +252,13 @@ function Admin() {
           <i className="bi bi-journal-text"></i><span>Inscription de L'eleve</span><i className="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" className="nav-content collapse " >
-          <li>
-            <a href="forms-layouts.html">
-              <i className="bi bi-circle"></i><span>Formulaire d'inscription</span>
-            </a>
-          </li>
+        <li>
+        <Link to="/formlay">
+         <i className="bi bi-circle"></i><span>Formulaire d'inscription</span>
+       </Link>
+      </li>
+
+
         </ul>
       </li>
       
