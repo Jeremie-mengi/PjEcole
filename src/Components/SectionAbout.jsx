@@ -1,5 +1,3 @@
-import React from 'react';
-
 function SectionAbout() {
   return (
     // About Section
@@ -16,8 +14,9 @@ function SectionAbout() {
 
           <div className="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p>
-            Le suivi scolaire est essentiel pour assurer la progression des élèves et identifier leurs besoins.Adapter l'enseignement et soutenir les apprentissages pour maximiser les réussites.
-
+        {   ` Le suivi scolaire est essentiel pour assurer la progression 
+            des élèves et identifier leurs besoins.Adapter l'enseignement et soutenir les apprentissages pour maximiser les réussites.
+`}
             </p>
             <ul>
               <li><i className="bi bi-check2-circle"></i> <span>Le suivi scolaire aide à évaluer les progrès des élèves et à ajuster les stratégies éducatives.</span></li>
@@ -29,12 +28,12 @@ function SectionAbout() {
 
           <div className="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <p>
-            Le suivi scolaire joue un rôle essentiel dans l'accompagnement des élèves. 
+       {   `  Le suivi scolaire joue un rôle essentiel dans l'accompagnement des élèves. 
             Il permet de détecter les besoins spécifiques, d'adapter les méthodes d'enseignement, 
             et d'assurer une progression continue. Grâce à un suivi rigoureux, les élèves bénéficient d'un soutien personnalisé, favorisant leur réussite académique. 
             Ce processus implique une collaboration étroite entre enseignants, parents et élèves, pour créer un environnement propice à l'apprentissage. 
             En fin de compte, un suivi scolaire efficace contribue à réduire les écarts de performance, à renforcer la confiance des élèves, et à préparer chaque enfant à un avenir prometteur.
-
+`}
             </p>
             <a href="#" className="read-more">
               <span>En savoir plus</span><i className="bi bi-arrow-right"></i>

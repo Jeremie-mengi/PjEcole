@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 function SectionContact() {
   return (
@@ -7,8 +7,10 @@ function SectionContact() {
       {/* <!-- Section Title --> */}
       <div className="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Pour toute question ou assistance, n'hésitez pas à nous contacter.
-           Nous sommes disponibles pour répondre à vos besoins et vous offrir un soutien personnalisé.</p>
+        <p>
+         { `Pour toute question ou assistance, n'hésitez pas à nous contacter.
+           Nous sommes disponibles pour répondre à vos besoins et vous offrir un soutien personnalisé.`}
+           </p>
       </div>
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">

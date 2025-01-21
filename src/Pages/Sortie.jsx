@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -81,7 +81,7 @@ function Sortie() {
 
     return (
         <div style={styles.container}>
-            <h2 style={styles.header}>Sorties de l'élève</h2>
+            <h2 style={styles.header}>{`Sorties de l'élève`}</h2>
             {loading ? (
                 <p style={styles.loading}>Chargement...</p>
             ) : (

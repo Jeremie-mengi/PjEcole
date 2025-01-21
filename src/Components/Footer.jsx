@@ -1,5 +1,3 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -11,7 +9,7 @@ function Footer() {
             <div className="row justify-content-center text-center">
               <div className="col-lg-6">
                 <h4>Motivation</h4>
-                <p>L'éducation est l'arme la plus puissante que vous pouvez utiliser pour changer le monde</p>
+                <p>{`L'éducation est l'arme la plus puissante que vous pouvez utiliser pour changer le monde`}</p>
               </div>
             </div>
           </div>

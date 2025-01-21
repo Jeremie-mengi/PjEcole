@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 function SectionServices() {
   return (
@@ -35,10 +35,12 @@ function SectionServices() {
           <div className="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="#" className="stretched-link">Communication des parents </a></h4>
-              <p>La communication des parents implique l'envoi régulier d'informations sur les progrès scolaires, 
+              <h4><a href="#" className="stretched-link">
+                Communication des parents </a></h4>
+              <p>{`La communication des parents implique l'envoi régulier d'informations sur les progrès scolaires, 
                 les événements scolaires, et les comportements des élèves. Cela permet de renforcer 
-                la collaboration entre les enseignants et les parents pour le bien-être et la réussite des élèves.</p>
+                la collaboration entre les enseignants et les parents pour le bien-être et la réussite des élèves.`}
+                </p>
             </div>
           </div>
           {/* End Service Item */}
@@ -47,9 +49,11 @@ function SectionServices() {
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-calendar4-week icon"></i></div>
               <h4><a href="#" className="stretched-link">Activités parascolaires</a></h4>
-              <p>Les activités parascolaires englobent les sports, les clubs, et autres initiatives qui enrichissent 
+              <p>
+            {   ` Les activités parascolaires englobent les sports, les clubs, et autres initiatives qui enrichissent 
                 l'expérience éducative des élèves en dehors des heures de cours. 
-                Elles favorisent le développement des compétences sociales, la créativité, et l'esprit d'équipe.</p>
+                Elles favorisent le développement des compétences sociales, la créativité, et l'esprit d'équipe.`}
+                </p>
             </div>
           </div>
           {/* End Service Item */}
@@ -58,9 +62,11 @@ function SectionServices() {
             <div className="service-item position-relative">
               <div className="icon"><i className="bi bi-broadcast icon"></i></div>
               <h4><a href="#" className="stretched-link"> Comportements et Conduite </a></h4>
-              <p>Le suivi des comportements et de la conduite des élèves permet d'assurer un environnement 
+              <p>
+             {  ` Le suivi des comportements et de la conduite des élèves permet d'assurer un environnement 
                 scolaire harmonieux et propice à l'apprentissage. 
-                Cela inclut l'observation des attitudes, la gestion des conflits, et le renforcement des valeurs positives.</p>
+                Cela inclut l'observation des attitudes, la gestion des conflits, et le renforcement des valeurs positives.`}
+                </p>
             </div>
           </div>
           {/* End Service Item */}

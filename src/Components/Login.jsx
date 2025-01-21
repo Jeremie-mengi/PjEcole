@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
@@ -58,7 +57,7 @@ function Login() {
                   <div className="card-body">
                     <div className="pt-4 pb-2">
                       <h5 className="card-title text-center pb-0 fs-4">Connectez-vous à votre compte</h5>
-                      <p className="text-center small">Entrez votre nom d'utilisateur et votre mot de passe pour vous connecter</p>
+                      <p className="text-center small">{`Entrez votre nom d'utilisateur et votre mot de passe pour vous connecter`}</p>
                     </div>
 
                     <form className="row g-3 needs-validation" onSubmit={handleSubmit(onSubmit)} noValidate>

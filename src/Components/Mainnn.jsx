@@ -1,25 +1,22 @@
-import React from 'react';
-
+// Main.jsx
 import SectionAbout from './SectionAbout';
 import SectionServices from './SectionServices';
 import SectionCall from './SectionCall';
 import SectionContact from './SectionContact';
-import Sectionhero from './SectionHero.jsx';
 import SectionPortFollo from './SectionPortFollo';
-import SectionHero from './SectionHero.jsx';
+import SectionHero from './SectionHero';
 
-
-function Mainnn() {
+function Main() {
   return (
     <>
-   <SectionHero/>
-    <SectionAbout/>
-    <SectionServices/>
-    <SectionCall/>
-    <SectionPortFollo/>
-    <SectionContact/>
+      <SectionHero />
+      <SectionAbout />
+      <SectionServices />
+      <SectionCall />
+      <SectionPortFollo />
+      <SectionContact />
     </>
   );
 }
 
-export default Mainnn;
+export default Main;

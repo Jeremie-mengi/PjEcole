@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -57,7 +57,7 @@ function Header() {
         </nav>
 
         <Link className="btn-getstarted" to="/Login">Se connecter </Link>
-        <Link className="btn-getstarted" to="/Register">S'incrire</Link>
+        <Link className="btn-getstarted" to="/Register">{`S'incrire`}</Link>
 
       </div>
     </header>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -197,12 +196,12 @@ function Admin() {
           </a>
         </li>
         <li>
-          <hr class="dropdown-divider"/>
+          <hr className="dropdown-divider"/>
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-            <i class="bi bi-gear"></i>
+          <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
+            <i className="bi bi-gear"></i>
             <span>Account Settings</span>
           </a>
         </li>
@@ -249,12 +248,12 @@ function Admin() {
 
       <li className="nav-item">
         <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i className="bi bi-journal-text"></i><span>Inscription de L'eleve</span><i className="bi bi-chevron-down ms-auto"></i>
+          <i className="bi bi-journal-text"></i><span>{`Inscription de L'eleve`}</span><i className="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" className="nav-content collapse " >
         <li>
         <Link to="/formlay">
-         <i className="bi bi-circle"></i><span>Formulaire d'inscription</span>
+         <i className="bi bi-circle"></i><span>{`Formulaire d'inscription`}</span>
        </Link>
       </li>
 
@@ -367,25 +366,25 @@ function Admin() {
       </nav>
     </div>
 
-    <section class="section dashboard">
-      <div class="row">
+    <section className="section dashboard">
+      <div className="row">
 
         {/* <!-- Left side columns --> */}
-        <div class="col-lg-8">
-          <div class="row">
+        <div className="col-lg-8">
+          <div className="row">
 
             {/* <!-- Sales Card --> */}
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+            <div className="col-xxl-4 col-md-6">
+              <div className="card info-card sales-card">
 
-                <div class="card-body">
-                  <h5 class="card-title">Nombre total d'eleves<span></span></h5>
+                <div className="card-body">
+                  <h5 className="card-title">{`Nombre total d'élèves`}<span></span></h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <div className="d-flex align-items-center">
+                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       {/* <!-- <i class="bi bi-cart"></i> --> */}
                     </div>
-                    <div class="ps-3">
+                    <div className="ps-3">
                       <h6>500</h6>
                     </div>
                   </div>
@@ -395,16 +394,16 @@ function Admin() {
             </div>
 
          
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-                <div class="card-body">
-                  <h5 class="card-title">Presences</h5>
+            <div className="col-xxl-4 col-md-6">
+              <div className="card info-card revenue-card">
+                <div className="card-body">
+                  <h5 className="card-title">Presences</h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <div className="d-flex align-items-center">
+                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       {/* <!-- <i class="bi bi-currency-dollar"></i> --> */}
                     </div>
-                    <div class="ps-3">
+                    <div className="ps-3">
                       <h6>480</h6>
                     </div>
                   </div>
@@ -414,16 +413,16 @@ function Admin() {
             </div>
 
            
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-                <div class="card-body">
-                  <h5 class="card-title">Absence</h5>
+            <div className="col-xxl-4 col-md-6">
+              <div className="card info-card revenue-card">
+                <div className="card-body">
+                  <h5 className="card-title">Absence</h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <div className="d-flex align-items-center">
+                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       {/* <!-- <i class="bi bi-currency-dollar"></i> --> */}
                     </div>
-                    <div class="ps-3">
+                    <div className="ps-3">
                       <h6>20</h6>
                     </div>
                   </div>
@@ -432,54 +431,54 @@ function Admin() {
               </div>
             </div>
 
-            <div class="col-12">
-              <div class="card top-selling overflow-auto">
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Utilisateurs<span></span></h5>
+            <div className="col-12">
+              <div className="card top-selling overflow-auto">
+                <div className="card-body pb-0">
+                  <h5 className="card-title">Utilisateurs<span></span></h5>
 
-                  <table class="table table-borderless">
+                  <table className="table table-borderless">
                     <thead>
                       <tr>
                         <th scope="col">Photo</th>
                         <th scope="col">nom utilisateur</th>
-                        <th scope="col">Nombre d'eleves</th>
+                        <th scope="col">{`Nombre d'eleves`}</th>
                         <th scope="col">Numero de telephone</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""/></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
+                        <td><a href="#" className="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
                         <td>$64</td>
-                        <td class="fw-bold">124</td>
+                        <td className="fw-bold">124</td>
                  
                       </tr>
                       <tr>
                         <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""/></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
+                        <td><a href="#" className="text-primary fw-bold">Exercitationem similique doloremque</a></td>
                         <td>$46</td>
-                        <td class="fw-bold">98</td>
+                        <td className="fw-bold">98</td>
                    
                       </tr>
                       <tr>
                         <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""/></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
+                        <td><a href="#" className="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
                         <td>$59</td>
-                        <td class="fw-bold">74</td>
+                        <td className="fw-bold">74</td>
                  
                       </tr>
                       <tr>
                         <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""/></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
+                        <td><a href="#" className="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
                         <td>$32</td>
-                        <td class="fw-bold">63</td>
+                        <td className="fw-bold">63</td>
                
                       </tr>
                       <tr>
                         <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""/></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
+                        <td><a href="#" className="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
                         <td>$79</td>
-                        <td class="fw-bold">41</td>
+                        <td className="fw-bold">41</td>
                       </tr>
                     </tbody>
                   </table>
