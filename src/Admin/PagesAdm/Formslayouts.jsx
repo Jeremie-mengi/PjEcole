@@ -1,8 +1,37 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
-
-
+import { useForm } from "react-hook-form";
+import axios from 'axios';
 function Formslayouts() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const res = await axios.post("http://localhost:3000/login", {
+        email: data.username, // Correspondance du champ
+        password: data.password, // Correspondance du champ
+      });
+
+      if (res.status === 200) {
+        localStorage.setItem('tokenUser', JSON.stringify(res.data));
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        alert('User connecté avec succès');
+        window.location.href = "/eleve";
+      }
+    } catch (error) {
+      console.log(error?.response);
+      const err = error?.response?.data?.message;
+      alert(err || 'Erreur lors de la connexion');
+    }
+  };
+
+  axios.create({
+    baseURL: 'http://localhost:3000', // Votre URL de base
+  });
+
   return (
     <>
 <header id="header" className="header fixed-top d-flex align-items-center">
@@ -195,12 +224,12 @@ function Formslayouts() {
           </a>
         </li>
         <li>
-          <hr class="dropdown-divider"/>
+          <hr className="dropdown-divider"/>
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-            <i class="bi bi-gear"></i>
+          <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
+            <i className="bi bi-gear"></i>
             <span>Account Settings</span>
           </a>
         </li>
@@ -246,12 +275,12 @@ function Formslayouts() {
 
   <li className="nav-item">
     <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-      <i className="bi bi-journal-text"></i><span>Inscription de L'eleve</span><i className="bi bi-chevron-down ms-auto"></i>
+      <i className="bi bi-journal-text"></i><span>{`Inscription de L'eleve`}</span><i className="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="forms-nav" className="nav-content collapse " >
     <li>
     <Link to="/formlay">
-     <i className="bi bi-circle"></i><span>Formulaire d'inscription</span>
+     <i className="bi bi-circle"></i><span>{`Formulaire d'inscription`}</span>
    </Link>
   </li>
 
@@ -350,6 +379,122 @@ function Formslayouts() {
 </ul>
 
 </aside>
+
+<main id="main" className="main">
+<div className="pagetitle">
+      <h1>TABLEAU DE BORD</h1>
+      <nav>
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+          <li className="breadcrumb-item active">Bienvenue</li>
+        </ol>
+      </nav>
+    </div>
+
+
+      <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
+    {  ` Formulaire d'Inscription`}
+      </h2>
+      
+      <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+        
+        {/* Nom */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+          <input
+            {...register("nom", { required: "Le nom est requis" })}
+            className="mt-1 p-3 w-full border rounded-md"
+            placeholder="Ex: Doe"
+          />
+          {errors.nom && <p className="text-red-500 text-sm mt-1">{errors.nom.message}</p>}
+        </div>
+
+        {/* Postnom */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Postnom</label>
+          <input
+            {...register("postnom", { required: "Le postnom est requis" })}
+            className="mt-1 p-3 w-full border rounded-md"
+            placeholder="Ex: Jean"
+          />
+          {errors.postnom && <p className="text-red-500 text-sm mt-1">{errors.postnom.message}</p>}
+        </div>
+
+        {/* Prénom */}
+        <div className="col-span-2">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
+          <input
+            {...register("prenom", { required: "Le prénom est requis" })}
+            className="mt-1 p-3 w-full border rounded-md"
+            placeholder="Ex: Michel"
+          />
+          {errors.prenom && <p className="text-red-500 text-sm mt-1">{errors.prenom.message}</p>}
+        </div>
+
+        {/* Sexe */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Sexe</label>
+          <select {...register("sexe", { required: "Le sexe est requis" })} className="mt-1 p-3 w-full border rounded-md">
+            <option value="">Sélectionnez...</option>
+            <option value="Masculin">Masculin</option>
+            <option value="Féminin">Féminin</option>
+          </select>
+          {errors.sexe && <p className="text-red-500 text-sm mt-1">{errors.sexe.message}</p>}
+        </div>
+
+        {/* Adresse */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse</label>
+          <input {...register("adresse")} className="mt-1 p-3 w-full border rounded-md" placeholder="Ex: Avenue Kasa-Vubu" />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input
+            {...register("email", { pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Email invalide" } })}
+            className="mt-1 p-3 w-full border rounded-md"
+            placeholder="exemple@email.com"
+          />
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+        </div>
+
+        {/* Téléphone */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Téléphone</label>
+          <input
+            {...register("telephone", { required: "Le téléphone est requis" })}
+            className="mt-1 p-3 w-full border rounded-md"
+            placeholder="+243 123 456 789"
+          />
+          {errors.telephone && <p className="text-red-500 text-sm mt-1">{errors.telephone.message}</p>}
+        </div>
+
+        {/* Classe */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Classe</label>
+          <input {...register("classe")} className="mt-1 p-3 w-full border rounded-md" placeholder="Ex: 3ème Secondaire" />
+        </div>
+
+        {/* ID Utilisateur */}
+        <div className="col-span-2">
+          <label className="block text-sm font-medium text-gray-700 mb-1">ID Utilisateur</label>
+          <input {...register("usId")} className="mt-1 p-3 w-full border rounded-md" placeholder="Identifiant unique" />
+        </div>
+
+        {/* Bouton de soumission */}
+        <div className="col-span-2 flex justify-center mt-4">
+          <button type="submit" className="w-full md:w-1/2 bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition">
+            Soumettre
+          </button>
+        </div>
+
+      </form>
+
+
+
+
+</main>
 
       
     </>

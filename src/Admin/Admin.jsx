@@ -1,8 +1,42 @@
 import { Link } from 'react-router-dom';
 
-
+import  { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Admin() {
+  const [totalStudents, setTotalStudents] = useState(0);
+  const [total, setTotal] = useState(0); // Stocker le total
+
+
+
+  useEffect(() => {
+    // Fonction pour récupérer le nombre total d'élèves
+    const fetchTotalStudents = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/students/count'); // Remplacez par votre URL
+        setTotalStudents(response.data.count);
+      } catch (error) {
+        console.error('Erreur lors de la récupération du total des élèves :', error);
+      }
+    };
+
+    fetchTotalStudents();
+  }, []);
+  
+  useEffect(() => {
+    const fetchTotalPresences = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/presences"); // Remplacez l'URL par votre API
+        setTotal(response.data.total); // Met à jour le total
+      } catch (err) {
+        console.error("Erreur lors de la récupération du total des présences :", err);
+      }
+    };
+    
+
+    fetchTotalPresences(); // Appeler la fonction au montage du composant
+  }, []);
+
   return (
     <>
     <body>
@@ -247,9 +281,9 @@ function Admin() {
       </li>
 
       <li className="nav-item">
-        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <Link  className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i className="bi bi-journal-text"></i><span>{`Inscription de L'eleve`}</span><i className="bi bi-chevron-down ms-auto"></i>
-        </a>
+        </Link>
         <ul id="forms-nav" className="nav-content collapse " >
         <li>
         <Link to="/formlay">
@@ -385,7 +419,7 @@ function Admin() {
                       {/* <!-- <i class="bi bi-cart"></i> --> */}
                     </div>
                     <div className="ps-3">
-                      <h6>500</h6>
+                      <h6>{totalStudents}</h6>
                     </div>
                   </div>
                 </div>
@@ -404,7 +438,7 @@ function Admin() {
                       {/* <!-- <i class="bi bi-currency-dollar"></i> --> */}
                     </div>
                     <div className="ps-3">
-                      <h6>480</h6>
+                      <h6>{total}</h6>
                     </div>
                   </div>
                 </div>
@@ -423,7 +457,7 @@ function Admin() {
                       {/* <!-- <i class="bi bi-currency-dollar"></i> --> */}
                     </div>
                     <div className="ps-3">
-                      <h6>20</h6>
+                      <h6>50</h6>
                     </div>
                   </div>
                 </div>
