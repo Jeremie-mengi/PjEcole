@@ -138,7 +138,7 @@ const getEleves = async (req, res) => {
 // Route POST pour créer un nouvel élève
 const createEleve = async (req, res) => {
     try {
-        const { nom, postnom, prenom, sexe, adresse, email, telephone, classe, presences, sorties, communiques, notifications, tuteurId } = req.body;
+        const { nom, postnom, prenom, sexe, adresse, email, telephone, classe, tuteurId } = req.body;
         const phoneNumber = parseInt(telephone, 10);
 
         // Rechercher un utilisateur avec le numéro de téléphone fourni
@@ -163,37 +163,7 @@ const createEleve = async (req, res) => {
                 telephone: phoneNumber,
                 classe: classe,
                 usId: userId, // Associer l'élève à l'utilisateur par ID ou numéro de téléphone
-                presences: {
-                    create: presences.map(presence => ({
-                        date: new Date(presence.date).toISOString(), // Convertir la date au format ISO
-                        etat: presence.etat,
-                    })),
-                },
-                sorties: {
-                    create: sorties.map(sortie => ({
-                        date: new Date(sortie.date).toISOString(), // Convertir la date au format ISO
-                        raison: sortie.raison,
-                    })),
-                },
-                communiques: {
-                    create: communiques.map(communique => ({
-                        date: new Date(communique.date).toISOString(), // Convertir la date au format ISO
-                        texte: communique.texte,
-                    })),
-                },
-                notifications: {
-                    create: notifications.map(notification => ({
-                        date: new Date(notification.date).toISOString(), // Convertir la date au format ISO
-                        message: notification.message,
-                    })),
-                },
-            },
-            include: {
-                presences: true,
-                sorties: true,
-                communiques: true,
-                notifications: true,
-            },
+            }
         });
 
         // Renvoi de la réponse avec l'élève créé

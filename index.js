@@ -8,7 +8,9 @@ const userRouteur = require("./routes/user")
 const presen = require("./routes/presences.js")
 const sortie = require ("./routes/sorties.js")
 const login = require("./routes/authUser.js");
+const countEleves = require("./routes/countEleves.js")
 const configPassport = require("./auth/usAuth"); // Importez la configuration de Passport
+const countPres = require("./routes/countPresences.js")
 
 // Initialiser l'application Express
 const app = express();
@@ -37,6 +39,11 @@ app.use("/login", login);
 app.use('/eleve', eleveRoutes);
 app.use('/', presen);
 app.use('/',sortie );
+app.use('/', countEleves);
+app.use('/', countPres);
+
+
+
 
 
 
