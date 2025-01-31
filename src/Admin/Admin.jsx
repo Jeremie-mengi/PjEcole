@@ -301,9 +301,9 @@ function Admin() {
         </a>
         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
+            <Link to="/Listes">
               <i className="bi bi-circle"></i><span> Liste des élèves.</span>
-            </a>
+            </Link>
           </li>
           <li>
             <a href="tables-data.html">

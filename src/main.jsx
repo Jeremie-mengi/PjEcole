@@ -16,6 +16,7 @@ import Communique from './Pages/Communique.jsx';
 import Notifications from './Pages/Notifications.jsx';
 import Admin from './Admin/Admin.jsx';
 import Formslay from './Admin/PagesAdm/Formslayouts.jsx';
+import Listes from './Admin/PagesAdm/Listes.jsx';
 
 
 
@@ -71,6 +72,11 @@ const router = createBrowserRouter(
         {
           path:"formlay",
           element:<Formslay/>
+          
+        },
+        {
+          path:"listes",
+          element:<Listes/>
           
         }
     ],

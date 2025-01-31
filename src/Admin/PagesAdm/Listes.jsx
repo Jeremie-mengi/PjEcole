@@ -1,34 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useForm } from "react-hook-form";
-import axios from 'axios';
-function Formslayouts() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+// import { useState } from "react";
+function Listes() {
 
-  const onSubmit = async (data) => {
-    try {
-      const res = await axios.post("http://localhost:3000/eleve", data);
-  
-      if (res.status === 201) { // 201 = Created, mieux pour une création
-        alert("Élève créé avec succès !");
-      } else {
-        alert("Une erreur est survenue, veuillez réessayer.");
-      }
-    } catch (error) {
-      console.error("Erreur lors de la création de l'élève :", error);
-  
-      // Vérification des erreurs renvoyées par le serveur
-      if (error.response) {
-        alert(error.response.data.message || "Erreur lors de la création de l'élève.");
-      } else {
-        alert("Impossible de se connecter au serveur.");
-      }
-    }
-  };
-  
+ 
   return (
     <>
 <header id="header" className="header fixed-top d-flex align-items-center">
@@ -390,107 +364,70 @@ function Formslayouts() {
 
 
       <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
-    {  ` Formulaire d'Inscription`}
+    {  ` Listes des eleves`}
       </h2>
       
-      <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-        
-        {/* Nom */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Nom</label>
-          <input
-            {...register("nom", { required: "Le nom est requis" })}
-            className="mt-1 p-3 w-full border rounded-md"
-            placeholder="Ex: Doe"
-          />
-          {errors.nom && <p className="text-red-500 text-sm mt-1">{errors.nom.message}</p>}
-        </div>
 
-        {/* Postnom */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Postnom</label>
-          <input
-            {...register("postnom", { required: "Le postnom est requis" })}
-            className="mt-1 p-3 w-full border rounded-md"
-            placeholder="Ex: Jean"
-          />
-          {errors.postnom && <p className="text-red-500 text-sm mt-1">{errors.postnom.message}</p>}
-        </div>
+      <section style={{
+            textAlign: 'center',
+            padding: '20px',
+            maxWidth: '600px',
+            margin: '0 auto',
+        }}>
+             <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '15px', flexWrap: 'wrap' }}>
+    <Link 
+        to="/presence" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Présence
+    </Link>
+    <Link 
+        to="/communique" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#2196F3', color: 'white', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Communiqué
+    </Link>
+    <Link 
+        to="/sortie" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FF5722', color: 'white', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Sortie
+    </Link>
+    <Link 
+        to="/notifications" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Notification
+    </Link>
+    <Link 
+        to="/notifications" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Notification
+    </Link>
+    <Link 
+        to="/notifications" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Notification
+    </Link>
+    <Link 
+        to="/notifications" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Notification
+    </Link>
+    <Link 
+        to="/notifications" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Notification
+    </Link>
+    <Link 
+        to="/notifications" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Notification
+    </Link>
+    <Link 
+        to="/notifications" 
+        style={{ minWidth: '180px', padding: '15px', fontSize: '18px', backgroundColor: '#FFEB3B', color: 'black', border: 'none', borderRadius: '8px', textDecoration: 'none', textAlign: 'center', display: 'inline-block' }}>
+        Notification
+    </Link>
+</div>
 
-        {/* Prénom */}
-        <div className="col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
-          <input
-            {...register("prenom", { required: "Le prénom est requis" })}
-            className="mt-1 p-3 w-full border rounded-md"
-            placeholder="Ex: Michel"
-          />
-          {errors.prenom && <p className="text-red-500 text-sm mt-1">{errors.prenom.message}</p>}
-        </div>
-
-        {/* Sexe */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Sexe</label>
-          <select {...register("sexe", { required: "Le sexe est requis" })} className="mt-1 p-3 w-full border rounded-md">
-            <option value="">Sélectionnez...</option>
-            <option value="Masculin">Masculin</option>
-            <option value="Féminin">Féminin</option>
-          </select>
-          {errors.sexe && <p className="text-red-500 text-sm mt-1">{errors.sexe.message}</p>}
-        </div>
-
-        {/* Adresse */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse</label>
-          <input {...register("adresse")} className="mt-1 p-3 w-full border rounded-md" placeholder="Ex: Avenue Kasa-Vubu" />
-        </div>
-
-        {/* Email */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input
-            {...register("email", { pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Email invalide" } })}
-            className="mt-1 p-3 w-full border rounded-md"
-            placeholder="exemple@email.com"
-          />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-        </div>
-
-        {/* Téléphone */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Téléphone</label>
-          <input
-            {...register("telephone", { required: "Le téléphone est requis" })}
-            className="mt-1 p-3 w-full border rounded-md"
-            placeholder="+243 123 456 789"
-          />
-          {errors.telephone && <p className="text-red-500 text-sm mt-1">{errors.telephone.message}</p>}
-        </div>
-
-        {/* Classe */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Classe</label>
-          <input {...register("classe")} className="mt-1 p-3 w-full border rounded-md" placeholder="Ex: 3ème Secondaire" />
-        </div>
-
-        {/* ID Utilisateur */}
-        <div className="col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">ID Utilisateur</label>
-          <input {...register("usId")} className="mt-1 p-3 w-full border rounded-md" placeholder="Identifiant unique" />
-        </div>
-
-        {/* Bouton de soumission */}
-        <div className="col-span-2 flex justify-center mt-4">
-          <button type="submit" className="w-full md:w-1/2 bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition">
-            Soumettre
-          </button>
-        </div>
-
-      </form>
-
-
-
-
+        </section>
 </main>
 
       
@@ -498,4 +435,4 @@ function Formslayouts() {
   )
 }
 
-export default Formslayouts
+export default Listes
